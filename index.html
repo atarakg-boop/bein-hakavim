@@ -46,6 +46,7 @@
   .cid{font-family:var(--mono);font-size:13px;fill:var(--blue-t);direction:ltr}
   .bbox{fill:none;stroke:var(--blue);stroke-width:2;stroke-dasharray:7 4}
   .ml rect{fill:#fff;stroke:var(--blue);stroke-width:1.6} .ml text{font-family:var(--sys);font-size:16px;font-weight:600;fill:var(--blue-t)}
+  .ml.alt text{text-decoration:underline;text-decoration-style:dashed;text-decoration-color:var(--red);text-decoration-thickness:2px}
   .ml.struck text{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
   .edl{stroke:var(--red);stroke-width:2.6;fill:none}
   .edc{fill:none;stroke:var(--red);stroke-width:2.6}
@@ -89,7 +90,7 @@
   .stages button:last-child{border-left:0}
   .stages button .num{margin-left:6px}
   .stages button[aria-pressed="true"]{background:var(--blue-t);color:#fff}
-  .stages button:focus-visible,.choices button:focus-visible,.cell button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+  .stages button:focus-visible,.cell button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   .stage-now{font-family:var(--sys);font-size:.95rem;color:var(--blue-t);margin:0 0 12px}
 
   .grid{display:grid;grid-template-columns:1fr 1.75fr 1fr;border:2px solid var(--blue);background:
@@ -102,6 +103,12 @@
   .cell.same{opacity:.45}
   .cell.same .k::after{content:"ללא שינוי"}
   .cell.changed .k::after{content:"● השתנה"}
+  .redhint{font-family:var(--sys);font-size:.85rem;color:var(--red);margin:0 0 6px}
+  .cell .t.alt{text-decoration:underline;text-decoration-style:dashed;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:5px}
+  .cell.key{border:3px solid var(--blue-t);opacity:1!important;background:rgba(234,243,251,.85)}
+  .cell.key .k::after{content:none}
+  .cell .keynote{display:none;font-family:var(--sys);font-size:.78rem;font-weight:700;color:#fff;background:var(--blue-t);padding:2px 8px;margin:0 0 8px;width:fit-content}
+  .cell.key .keynote{display:block}
   .cell .t.struck{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
   .cell .fix{font-family:var(--serif);font-weight:700;color:var(--red);font-size:1.2rem;line-height:1.3;margin:0 0 4px;animation:fade .4s}
   .cell .more{font:inherit;font-size:.72rem;color:var(--blue-t);background:none;border:0;padding:0;margin-top:8px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;display:block;opacity:.8}
@@ -113,21 +120,23 @@
   .pic img{display:block;width:100%;height:auto;filter:grayscale(1) contrast(1.08)}
   .tag{position:absolute;font-family:var(--sys);font-size:.82rem;font-weight:600;line-height:1.25;background:#fff;color:var(--blue-t);border:1.5px dashed var(--blue);padding:2px 7px;white-space:nowrap;direction:rtl;animation:fade .35s}
   .tag.giv{border-style:solid}
+  .tag.alt span{text-decoration:underline;text-decoration-style:dashed;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
   .tag.struck span{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
   .tag .tfix{position:absolute;bottom:100%;right:0;margin-bottom:3px;font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--red);background:rgba(255,255,255,.94);padding:0 6px;white-space:nowrap}
   @keyframes fade{from{opacity:0}to{opacity:1}}
   .credit{font-family:var(--sys);font-size:.78rem;color:var(--ink2);margin-top:8px}
 
-  .ask{margin-top:24px;border-top:1px solid var(--rule);padding-top:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:10px 44px}
-  .ask .q{font-size:1.35rem;margin:0}
-  .choices{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-  .choices button{font:inherit;font-family:var(--sys);font-size:.92rem;background:#fff;color:var(--ink);border:1px solid var(--ink2);padding:8px 14px;cursor:pointer}
-  .choices button:hover{border-color:var(--ink)}
-  .choices button.picked{background:var(--ink);color:#fff}
-  .locked{font-family:var(--sys);font-size:.85rem;color:var(--ink2);align-self:center}
+  .redbar{margin-top:24px;border-top:1px solid var(--rule);padding-top:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:10px 44px;align-items:start}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+  .redbtn{font:inherit;font-family:var(--sys);font-size:1rem;font-weight:600;background:#fff;color:var(--red);border:2px solid var(--red);padding:10px 18px;cursor:pointer}
+  .redbtn[aria-pressed="true"]{background:var(--red);color:#fff}
+  .redbtn:focus-visible{outline:2px solid var(--blue-t);outline-offset:2px}
+  .doclink{display:block;font-family:var(--sys);font-size:.85rem;color:var(--blue-t);margin-top:12px}
   .reveal{display:none} .reveal.open{display:block;animation:fade .4s}
   .reveal .rh{color:var(--red);font-size:1.6rem;line-height:1.2;margin:0 0 .3em}
   .reveal p{margin:0}
+  .marks{display:flex;flex-wrap:wrap;gap:6px 22px;font-family:var(--sys);font-size:.88rem;color:var(--red);margin-top:.8em}
+  .marks s{text-decoration-thickness:2px} .marks u{text-decoration-style:dashed;text-underline-offset:4px}
 
   .closing{font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.3}
   ol.src{font-size:.92rem;color:var(--ink2);padding-inline-start:1.2em}
@@ -139,7 +148,7 @@
     .center{grid-column:1 / -1;grid-row:1}
     .cell{min-height:0}
     .tag{font-size:.6rem} .tag .tfix{font-size:.82rem}
-    .ask{grid-template-columns:1fr}
+    .redbar{grid-template-columns:1fr}
   }
   @media (max-width:700px){
     .collage{overflow-x:auto} .collage svg{min-width:780px}
@@ -180,10 +189,10 @@
     <!-- תוויות המכונה, כל אחת בתוך התא שלה -->
     <g class="ml"><rect/><text x="200" y="282" text-anchor="middle">גבר מבוגר, "מבט ממוקד וחמדני"</text></g>
     <g class="ml"><rect/><text x="300" y="400" text-anchor="middle">כאפייה → ערבים</text></g>
-    <g class="ml struck"><rect/><text x="560" y="462" text-anchor="middle">כיפה, אף ארוך → ?</text></g>
+    <g class="ml"><rect/><text x="560" y="462" text-anchor="middle">כיפה, אף ארוך → ?</text></g>
     <g class="ml"><rect/><text x="640" y="222" text-anchor="middle">מריצה → פינוי</text></g>
     <g class="ml struck"><rect/><text x="1010" y="225" text-anchor="middle">"הדמות המרימה (בנימין נתניהו)"</text></g>
-    <g class="ml struck"><rect/><text x="1000" y="706" text-anchor="middle">שלושתם = ברית אחת</text></g>
+    <g class="ml alt"><rect/><text x="1000" y="706" text-anchor="middle">שלושתם = ברית אחת</text></g>
 
     <!-- הגהות: קווים נקיים שחוצים את הרשת -->
     <circle class="edc draw" cx="171" cy="345" r="58"/>
@@ -201,9 +210,9 @@
     <g class="edn"><circle cx="455" cy="414" r="12"/><text x="455" y="418.5" text-anchor="middle">4</text></g>
     <g class="edn"><circle cx="868" cy="440" r="12"/><text x="868" y="444.5" text-anchor="middle">5</text></g>
 
-    <text class="edt" x="560" y="440" text-anchor="middle" font-size="24">נתניהו</text>
+    <text class="edt" x="560" y="440" text-anchor="middle" font-size="24">‸ נתניהו</text>
     <text class="edt" x="1010" y="198" text-anchor="middle" font-size="24">ליברמן</text>
-    <text class="edt" x="1000" y="680" text-anchor="middle" font-size="22">שניים מול אחד</text>
+    <text class="edt" x="1000" y="680" text-anchor="middle" font-size="22">או: שניים מול אחד</text>
 
     <!-- הערות שוליים של העורך -->
     <g>
@@ -257,12 +266,18 @@
     <h2>עיפרון כחול, עיפרון אדום</h2>
     <p>מתוך המהלכים שהמטלה מציעה שילבתי שניים: <b>להחליף ארכיון</b>, כלומר הפעלתי את השיטה של <i>Ekphrasis</i> על ארכיון ישראלי של קריקטורות פוליטיות, ו<b>לתת למכונה לתאר</b>, כלומר ביקשתי מ-Gemini לתאר ולפרש כל קריקטורה, והצבתי את התיאור שלו מול הקריאה האנושית.</p>
     <p><b>שאלת החקירה:</b> כיצד מודל בינה מלאכותית מפרש קריקטורות פוליטיות ישראליות, וכיצד מידע על זהות הדמויות וההקשר משנה את המשמעות שהוא מייחס לדימוי?</p>
-    <p>כל קריקטורה הוצגה ל-Gemini בארבעה שלבים: התמונה בלבד, פרטי הפרסום, חיפוש ברשת ושמות האישים. בכל תחנה הדימוי במרכז רשת של תשעה אזורים, כמו ב-<i>Ekphrasis</i>, ולרשת נוסף ציר זמן. הפרשנות של Gemini מופיעה בעיפרון כחול, כמו סקיצה שמשורטטת מחדש בכל שלב. אחרי שעונים על שאלה אחת מגיע העיפרון האדום: הוא מוחק, מתקן ומחבר, ולפעמים גם מאשר שהמכונה צדקה.</p>
+    <p>כל קריקטורה הוצגה ל-Gemini בארבעה שלבים דומים, אם כי לא זהים לגמרי: התמונה בלבד, פרטי הפרסום, חיפוש ברשת ושמות האישים. בכל תחנה הדימוי במרכז רשת של תשעה אזורים, כמו ב-<i>Ekphrasis</i>, ולרשת נוסף ציר זמן. הפרשנות של Gemini מופיעה בעיפרון כחול, כמו סקיצה שמשורטטת מחדש בכל שלב. בכל שלב מודגש התא שבו קרה השינוי המרכזי. בלחיצה על "עיפרון אדום" מופיעה הקריאה האנושית, שהיא קריאה אחת אפשרית ולא בהכרח כוונת המאייר.</p>
     <div class="legend" aria-label="מקרא">
       <span class="bl"><i class="sw" style="border-color:var(--blue)"></i>עיפרון כחול: הפרשנות של המכונה</span>
       <span><i class="sw" style="border-color:var(--ink)"></i>דיו: הקריקטורה</span>
       <span class="ed"><i class="sw" style="border-color:var(--red)"></i>עיפרון אדום: הקריאה האנושית</span>
       <span class="bl"><i class="sw" style="border-top:2px dashed var(--blue)"></i>מקווקו: מה שנמסר למכונה</span>
+    </div>
+    <div class="marks" aria-label="סוגי הסימון האדום">
+      <span><s>קו מחיקה</s>: שגיאה שאפשר לאמת</span>
+      <span><b style="font-size:1.4em;line-height:0">‸</b> מידע שחסר למכונה</span>
+      <span><u>או:</u> פרשנות אחרת</span>
+      <span>✓ המכונה צדקה</span>
     </div>
     <div class="cards">
       <a class="card" href="#frog"><img src="img/frogs.png" alt=""><span>לבלוע צפרדע<small>3.11.2026</small></span></a>
@@ -279,12 +294,11 @@
   <div class="wrap">
     <p class="eyebrow">ממצאים</p>
     <h2>מה נשאר כשנוסף מידע</h2>
-    <p>בשלוש הקריקטורות Gemini זיהה חלק ניכר מהאובייקטים, מהפעולות ומהיחסים החזותיים, אבל התקשה לזהות לבדו את רוב האישים ואת ההקשר האקטואלי.</p>
-    <p><b>הצפרדעים.</b> כאן הפער החד ביותר. Gemini השתמש במילה "לבלוע" כבר בשלב הראשון, אבל במשמעות של לטרוף, לא במשמעות הניב "לבלוע צפרדע". את הקריאה הזו שמר בכל ארבעת השלבים, גם אחרי שקיבל את השם. הפער אינו בראייה אלא בשפה.</p>
-    <p><b>המריצה.</b> חלק משמעותי מהסיפור שוחזר בלי לזהות איש. החיפוש הוביל לזיהוי שגוי (נתניהו), ורק השם ליברמן פתח את הרמיזה לאמירה מ-2021. זה המקרה שבו מידע חדש הפך את הפרשנות באופן הברור ביותר.</p>
-    <p><b>ברית המשרתים.</b> המטאפורה המרכזית הובנה כבר בשלב הראשון. בשלב השני Gemini ניחש נכון את נתניהו, ובשלב החיפוש "שכח" אותו. כשקיבל את השמות, איחד את שלושתם לברית אחת. הקריאה הזו נאמנה לציור: שלושתם צועדים באותה שורה, באותם מדים, מתחת למילה "ברית". ההפרדה בין נתניהו לבין איזנקוט וליברמן נמצאת בידע שמחוץ לקווים.</p>
-    <p>מידע נוסף לא שיפר את הפרשנות באופן אחיד. לעיתים חשף הקשר חדש, ולעיתים נבלע בפרשנות שכבר נבנתה. הממצא המשמעותי אינו עצם קיומן של טעויות, אלא היכולת לייצר הסברים רציפים ומשכנעים גם כשהבסיס שלהם חלקי. אחרי החיפוש ואחרי השמות Gemini תיאר את הפרשנות שלו כ"מעמיקה" או "מתחדדת", גם כשהיא נשענה על זיהוי שגוי (נתניהו במריצה) או כשהמשמעות המרכזית לא השתנתה (הצפרדעים).</p>
-    <p>גם הקריאה האנושית נשענת על ידע מוקדם ואינה חפה מטעויות. הניסוי אינו מוכיח עדיפות של אדם על מכונה. הוא מדגים כמה פרשנות חזותית תלויה בידע, בהקשר ובשפה. בהמשך לסומאיני, אי אפשר לדעת מה בדיוק נכלל בנתוני האימון. אפשר לראות אילו משמעויות הופיעו בתשובות, אילו לא, ואיך הן השתנו כשנוסף מידע.</p>
+    <p style="font-size:1.25rem">מידע נוסף לא קירב את המכונה למשמעות באופן אחיד. הוא שינה את הסקיצה הכחולה: לפעמים לכיוון המשמעות, לפעמים הרחק ממנה, ולפעמים בכלל לא. ובכל זאת, אחרי החיפוש ואחרי השמות Gemini תיאר את הפרשנות שלו כ"מעמיקה" או "מתחדדת".</p>
+    <p><b>לבלוע צפרדע.</b> המילה "לבלוע" הופיעה כבר בשלב הראשון, אבל במשמעות של טריפה. הפער המרכזי לא היה בזיהוי האובייקטים אלא בפענוח הניב, והקריאה הזו נשמרה בכל ארבעת השלבים.</p>
+    <p><b>המריצה.</b> הסיטואציה שוחזרה בלי לזהות איש. החיפוש הוביל לזיהוי שגוי, ורק השם ליברמן פתח את הרמיזה לאמירה מ-2021.</p>
+    <p><b>ברית המשרתים.</b> המטאפורה הובנה כבר מהתמונה. בשלב החיפוש הזיהוי של נתניהו לא נשמר, ובשלב השמות שלושתם אוחדו לברית אחת, קריאה שנתמכת בקומפוזיציה של הציור.</p>
+    <p>גם הקריאה האנושית נשענת על ידע מוקדם, והיא אינה בהכרח כוונת המאייר. הניסוי אינו מוכיח עדיפות של אדם על מכונה, ואינו חושף את נתוני האימון. הוא מראה אילו משמעויות הופיעו בתשובות, אילו לא, ואיך הן השתנו כשנוסף מידע.</p>
   </div>
 </section>
 
@@ -314,7 +328,7 @@
       <li>בידרמן, עמוס. קריקטורות יומיות. הארץ, 3, 9 ו-13 בנובמבר 2026.</li>
       <li>אזולאי, מורן. (14.3.2021). "החרדים? על מריצה, ולמזבלה": התבטאות ליברמן והסערה. ynet.</li>
       <li>בן קימון, אלישע, ליהיא גורדון ומורן אזולאי. (27.10.2026). בנט: "נתניהו הפסיד, ממשלת 7/10 תלך הביתה. אנחנו בגוש מתואמים". ynet.</li>
-      <li>תיעוד השיחות עם Gemini, נובמבר 2026. הציטוטים מובאים כלשונם, כולל שגיאות.</li>
+      <li>תיעוד השיחות עם Gemini, נובמבר 2026: <a href="docs/gemini-frogs.txt">לבלוע צפרדע</a>, <a href="docs/gemini-wheelbarrow.txt">המריצה</a>, <a href="docs/gemini-brit.txt">ברית המשרתים</a>. הציטוטים מובאים כלשונם, כולל שגיאות.</li>
     </ol>
   </div>
 </section>
@@ -334,6 +348,8 @@ const same4 = c => [c,c,c,c];
 
 const CASES = [
 {
+  key:[{k:'msg',n:'הקריאה הראשונה: "לבלוע" כטריפה'},{k:'crit',n:'נוספו "שותפים קואליציוניים", המסר נשאר'},{k:'unk',n:'החיפוש לא מצא דבר, והפרשנות לא זזה'},{k:'who',n:'השם נמסר, ונתניהו נוסף מיוזמת המכונה'}],
+  doc:'docs/gemini-frogs.txt',
   id:'frog', title:'לבלוע צפרדע', date:'3.11.2026', img:'img/frogs.png',
   alt:'קריקטורה: גבר מזיע עם סכין ומזלג מול שלוש צפרדעים על צלחות: אחת עם מגבעת ופאות, אחת עם כאפייה ואחת עם כיפה.',
   stages:['תמונה בלבד','מאייר ותאריך','חיפוש ברשת','"מדובר בליברמן"'],
@@ -349,27 +365,27 @@ const CASES = [
       ['id','"אין... זיהוי מפורש"','"אין בקריקטורה שום כיתוב או זיהוי מפורש" של האיש.'],
       ['id','"אין זיהוי רשמי חד-משמעי"','"אין זיהוי רשמי חד-משמעי של הדמות האנושית".'],
       ['id','"אין זיהוי רשמי חד-משמעי"','"אין זיהוי רשמי חד-משמעי של הדמות האנושית".'],
-      ['uns','ליברמן, "כמו בנימין נתניהו"','ליברמן, ובנוסף, מיוזמת המודל: "לצד דמויות פוליטיות מרכזיות נוספות במפה כמו בנימין נתניהו".',{s:'strike',t:'נתניהו הוא צפרדע, לא סועד'}]],
+      ['uns','ליברמן, "כמו בנימין נתניהו"','ליברמן, ובנוסף, מיוזמת המודל: "לצד דמויות פוליטיות מרכזיות נוספות במפה כמו בנימין נתניהו".',{s:'alt',t:'נתניהו הוא אחת הצפרדעים'}]],
     sym:[
       ['id','חרדים, ערבים, כיפה = ?','מגבעת ופאות = "המגזר החרדי", כאפייה = "האוכלוסייה הערבית", כיפה: לא מוגדר.'],
       ['id','חרדים, ערבים, כיפה = ?','מגבעת ופאות = "המגזר החרדי", כאפייה = "האוכלוסייה הערבית", כיפה: לא מוגדר.'],
       ['id','חרדים, ערבים, כיפה = ?','מגבעת ופאות = "המגזר החרדי", כאפייה = "האוכלוסייה הערבית", כיפה: לא מוגדר.'],
       ['id','"גם שחקנים פוליטיים"','הצפרדעים "אינן מייצגות רק סמלים מגזריים, אלא גם שחקנים פוליטיים".']],
     msg:[
-      ['uns','כוונה "<mark>לבלוע</mark>", לחסל, לנצל','"המחשה חזותית של תחושת איום או כוונה מצד מנהיג פוליטי \'לבלוע\', לחסל או לנצל קבוצות שונות באוכלוסייה".',{s:'note',t:'"לבלוע צפרדע": לקבל בעל כורחו'}],
-      ['uns','אותה "<mark>בליעה</mark>"','"הפרשנות הבסיסית לא משתנה מהותית": אותה "בליעה", עכשיו כסאטירה אקטואלית.',{s:'note',t:'"לבלוע צפרדע": לקבל בעל כורחו'}],
-      ['uns','"אינן משתנות"','"הדעת והפרשנות אינן משתנות".',{s:'note',t:'"לבלוע צפרדע": לקבל בעל כורחו'}],
-      ['uns','"לנטרל יריבים"','"הניסיון לנטרל יריבים ושותפים לשעבר במשחק הפוליטי".',{s:'strike',t:'לבלוע פשרה, לא לנטרל'}]],
+      ['uns','כוונה "<mark>לבלוע</mark>", לחסל, לנצל','"המחשה חזותית של תחושת איום או כוונה מצד מנהיג פוליטי \'לבלוע\', לחסל או לנצל קבוצות שונות באוכלוסייה".',{s:'alt',t:'"לבלוע צפרדע": לקבל בעל כורחו'}],
+      ['uns','אותה "<mark>בליעה</mark>"','"הפרשנות הבסיסית לא משתנה מהותית": אותה "בליעה", עכשיו כסאטירה אקטואלית.',{s:'alt',t:'"לבלוע צפרדע": לקבל בעל כורחו'}],
+      ['uns','"אינן משתנות"','"הדעת והפרשנות אינן משתנות".',{s:'alt',t:'"לבלוע צפרדע": לקבל בעל כורחו'}],
+      ['uns','"לנטרל יריבים"','"הניסיון לנטרל יריבים ושותפים לשעבר במשחק הפוליטי".',{s:'alt',t:'לבלוע פשרה, לא לנטרל'}]],
     unk:[
       ['id','צפרדע עם "אף ארוך": ?','הצפרדע הימנית, עם כיפה ו"מאפיינים קריקטוריסטיים חריגים (אף ארוך)": לא ברור את מי היא מייצגת.',{s:'note',t:'נתניהו'}],
       ['id','"הצפרדע השלישית"','"האסוציאציה המדויקת של הצפרדע השלישית".',{s:'note',t:'נתניהו'}],
       ['id','"אין ברשת תיעוד"','"אין ברשת תיעוד או מידע ספציפי על קריקטורה ספציפית זו".'],
       ['id','לא צוין','']],
     crit:[
-      ['uns','"בדורסנות, בכוחנות"','"מנהיגות הפועלת בדורסנות, בכוחנות ובפילוג כלפי מגזרים שונים בחברה".',{s:'strike',t:'מצוקה, לא כוחנות'}],
-      ['uns','"בליעה" של שותפים','"\'בליעה\' של קבוצות מיעוט או שותפים קואליציוניים/אופוזיציוניים".',{s:'note',t:'כמעט: אבל הוא זה שנאלץ לבלוע'}],
-      ['uns','"בליעה" של שותפים','"\'בליעה\' של קבוצות מיעוט או שותפים קואליציוניים/אופוזיציוניים".',{s:'note',t:'כמעט: אבל הוא זה שנאלץ לבלוע'}],
-      ['uns','"ארוחה" פוליטית','השותפים והיריבים כ"ארוחה" פוליטית "שנועדה לשרת הישרדות שלטונית".',{s:'strike',t:'ארוחה שהוא לא רוצה לאכול'}]],
+      ['uns','"בדורסנות, בכוחנות"','"מנהיגות הפועלת בדורסנות, בכוחנות ובפילוג כלפי מגזרים שונים בחברה".',{s:'alt',t:'מצוקה, לא כוחנות'}],
+      ['uns','"בליעה" של שותפים','"\'בליעה\' של קבוצות מיעוט או שותפים קואליציוניים/אופוזיציוניים".',{s:'alt',t:'הוא זה שנאלץ לבלוע'}],
+      ['uns','"בליעה" של שותפים','"\'בליעה\' של קבוצות מיעוט או שותפים קואליציוניים/אופוזיציוניים".',{s:'alt',t:'הוא זה שנאלץ לבלוע'}],
+      ['uns','"ארוחה" פוליטית','השותפים והיריבים כ"ארוחה" פוליטית "שנועדה לשרת הישרדות שלטונית".',{s:'alt',t:'ארוחה שהוא לא רוצה לאכול'}]],
     self:[
       ['id','שלב ראשון',''],
       ['id','"לא משתנה מהותית"','"הפרשנות הבסיסית לא משתנה מהותית".'],
@@ -377,10 +393,10 @@ const CASES = [
       ['id','"משנה באופן משמעותי"','"משנה באופן משמעותי את עומק הפרשנות".']]
   },
   tags:[
-    [[18,6,'id','גבר מבוגר, "חמדני"'],[30,86,'id','מגבעת ופאות → חרדים'],[50,30,'id','כאפייה → ערבים'],[70,40,'id','כיפה, אף ארוך → ?',{s:'note',t:'נתניהו'}],[2,40,'uns','מזלג וסכין → "לבלוע"',{s:'note',t:'לבלוע צפרדע'}]],
-    [[18,6,'id','גבר מבוגר, "חמדני"'],[30,86,'id','מגבעת ופאות → חרדים'],[50,30,'id','כאפייה → ערבים'],[70,40,'id','כיפה, אף ארוך → ?',{s:'note',t:'נתניהו'}],[2,40,'uns','מזלג וסכין → "לבלוע"',{s:'note',t:'לבלוע צפרדע'}]],
-    [[18,6,'id','גבר מבוגר, "חמדני"'],[30,86,'id','מגבעת ופאות → חרדים'],[50,30,'id','כאפייה → ערבים'],[70,40,'id','כיפה, אף ארוך → ?',{s:'note',t:'נתניהו'}],[2,40,'uns','מזלג וסכין → "לבלוע"',{s:'note',t:'לבלוע צפרדע'}]],
-    [[18,6,'giv','ליברמן'],[30,86,'id','חרדים, שחקן פוליטי'],[50,30,'id','ערבים, שחקן פוליטי'],[70,40,'id','כיפה, אף ארוך → ?',{s:'note',t:'נתניהו'}],[2,40,'uns','"לנטרל יריבים"',{s:'strike',t:'לבלוע צפרדע'}],[64,4,'uns','"כמו בנימין נתניהו"?',{s:'strike',t:'הוא על הצלחת'}]]
+    [[18,6,'id','גבר מבוגר, "חמדני"'],[30,86,'id','מגבעת ופאות → חרדים'],[50,30,'id','כאפייה → ערבים'],[70,40,'id','כיפה, אף ארוך → ?',{s:'note',t:'נתניהו'}],[2,40,'uns','מזלג וסכין → "לבלוע"',{s:'alt',t:'לבלוע צפרדע'}]],
+    [[18,6,'id','גבר מבוגר, "חמדני"'],[30,86,'id','מגבעת ופאות → חרדים'],[50,30,'id','כאפייה → ערבים'],[70,40,'id','כיפה, אף ארוך → ?',{s:'note',t:'נתניהו'}],[2,40,'uns','מזלג וסכין → "לבלוע"',{s:'alt',t:'לבלוע צפרדע'}]],
+    [[18,6,'id','גבר מבוגר, "חמדני"'],[30,86,'id','מגבעת ופאות → חרדים'],[50,30,'id','כאפייה → ערבים'],[70,40,'id','כיפה, אף ארוך → ?',{s:'note',t:'נתניהו'}],[2,40,'uns','מזלג וסכין → "לבלוע"',{s:'alt',t:'לבלוע צפרדע'}]],
+    [[18,6,'giv','ליברמן'],[30,86,'id','חרדים, שחקן פוליטי'],[50,30,'id','ערבים, שחקן פוליטי'],[70,40,'id','כיפה, אף ארוך → ?',{s:'note',t:'נתניהו'}],[2,40,'uns','"לנטרל יריבים"',{s:'alt',t:'לבלוע צפרדע'}],[64,4,'uns','"כמו בנימין נתניהו"?',{s:'alt',t:'הוא על הצלחת'}]]
   ],
   human:{
     q:'מה הדמות עומדת לעשות?',
@@ -391,6 +407,8 @@ const CASES = [
   credit:'איור: עמוס בידרמן, הארץ, 3.11.2026'
 },
 {
+  key:[{k:'msg',n:'הסיטואציה שוחזרה בלי שמות'},{k:'crit',n:'רק מסגור פוליטי כללי'},{k:'who',n:'החיפוש הוביל לזיהוי שגוי'},{k:'sym',n:'השם פתח את הרמיזה ל-2021'}],
+  doc:'docs/gemini-wheelbarrow.txt',
   id:'wheel', title:'המריצה', date:'9.11.2026', img:'img/wheelbarrow.png',
   alt:'קריקטורה: גבר בחליפה מרים באוויר דמות חרדית מתוך מריצה שבה נותרות שתי דמויות חרדיות. ברקע שביל, תמרור וטרקטור על גבעה.',
   stages:['תמונה בלבד','מאייר ותאריך','חיפוש ברשת','"מדובר בליברמן"'],
@@ -448,6 +466,8 @@ const CASES = [
   credit:'איור: עמוס בידרמן, הארץ, 9.11.2026'
 },
 {
+  key:[{k:'msg',n:'המטאפורה הובנה כבר מהתמונה'},{k:'who',n:'ניחוש נכון של נתניהו'},{k:'who',n:'הזיהוי של נתניהו לא נשמר'},{k:'msg',n:'השמות אוחדו לברית אחת'}],
+  doc:'docs/gemini-brit.txt',
   id:'brit', title:'ברית המשרתים', date:'13.11.2026', img:'img/brit.png',
   alt:'קריקטורה: שלושה מלצרים בטוקסידו מגישים מגשים לשלוש דמויות חרדיות היושבות לשולחן, תחת הכותרת "ברית המשרתים".',
   stages:['תמונה חתוכה','צילום מלא עם קרדיט ותאריך','חיפוש ברשת','שמות: נתניהו, איזנקוט, ליברמן'],
@@ -473,7 +493,7 @@ const CASES = [
       ['id','פוליטיקאים "בתפקיד של משרתים"','הפוליטיקאים "מוצאים את עצמם בתפקיד של \'משרתים\'... ונענים לכל גחמה או דרישה שלהם".'],
       ['id','פוליטיקאים "בתפקיד של משרתים"','הפוליטיקאים "מוצאים את עצמם בתפקיד של \'משרתים\'... ונענים לכל גחמה או דרישה שלהם".'],
       ['id','"הפכו למעשה למשרתים"','"\'ברית המשרתים\' התפוגגה ובמקומה אותם פוליטיקאים הפכו למעשה למשרתים (מלצרים) המתרפסים בפני החרדים כדי להקים ממשלה".'],
-      ['uns','יריבים "מתאחדים"','"יריבים פוליטיים מרים (נתניהו מול ליברמן ואיזנקוט) מתאחדים, אך המחיר של האחדות הזו הוא התרפסות משותפת".',{s:'strike',t:'מתחרים: נתניהו מול איזנקוט וליברמן'}]],
+      ['uns','יריבים "מתאחדים"','"יריבים פוליטיים מרים (נתניהו מול ליברמן ואיזנקוט) מתאחדים, אך המחיר של האחדות הזו הוא התרפסות משותפת".',{s:'alt',t:'מתחרים: נתניהו מול איזנקוט וליברמן'}]],
     unk:[
       ['id','זהות המשרתים, האירוע','"זהותם המדויקת של המשרתים/הפוליטיקאים", "ההקשר או האירוע הספציפי".'],
       ['id','מה מתחת לקלרוש','"מה מסתתר מתחת לכיסוי (הקלרוש)", האירוע החדשותי המדויק.'],
@@ -483,7 +503,7 @@ const CASES = [
       ['id','"כניעה מוחלטת"','"כניעה מוחלטת או התבטלות של פוליטיקאים... בפני המפלגות וההנהגה החרדית".'],
       ['id','+ "קו המערכת"','אותה ביקורת, עכשיו "מנקודת מבט ליברלית-חילונית המזוהה עם קו המערכת".'],
       ['id','"הצביעות... והזיגזג"','"הצביעות... והזיגזג של פוליטיקאים שהבטיחו לשנות את סדרי העולם סביב סוגיית השירות".'],
-      ['uns','שניים "מצטרפים אליו מאחור"','"איזנקוט וליברמן מצטרפים אליו מאחור ומיישרים קו עם התנאים של השותפים החרדיים".',{s:'strike',t:'הם לא איתו, הם מולו'}]],
+      ['uns','שניים "מצטרפים אליו מאחור"','"איזנקוט וליברמן מצטרפים אליו מאחור ומיישרים קו עם התנאים של השותפים החרדיים".',{s:'alt',t:'הם לא איתו, הם מולו'}]],
     self:[
       ['id','שלב ראשון',''],
       ['id','"לא השתנתה"','"הפרשנות המרכזית של הקריקטורה לא השתנתה".'],
@@ -493,14 +513,14 @@ const CASES = [
   tags:[
     [[60,4,'id','כותרת: "ברית המשרתים"'],[6,18,'id','3 דמויות חרדיות'],[50,90,'id','3 מלצרים, "דמויות פוליטיות מוכרות"']],
     [[60,4,'id','כותרת: "ברית המשרתים"'],[6,18,'id','3 דמויות חרדיות'],[40,20,'id','נתניהו?'],[66,60,'id','ליברמן / גנץ / סער?']],
-    [[60,4,'id','כותרת → "ניצחה את ברית המשתמטים"'],[6,18,'id','3 דמויות חרדיות'],[50,90,'uns','"מנהיגי מחנה השינוי"',{s:'strike',t:'+ נתניהו, לבד'}]],
-    [[40,20,'giv','נתניהו'],[52,30,'giv','איזנקוט'],[73,30,'giv','ליברמן'],[50,90,'uns','שלושתם = ברית אחת',{s:'strike',t:'שניים מול אחד'}]]
+    [[60,4,'id','כותרת → "ניצחה את ברית המשתמטים"'],[6,18,'id','3 דמויות חרדיות'],[50,90,'uns','"מנהיגי מחנה השינוי"',{s:'strike',t:'נתניהו אינו ממחנה השינוי'}]],
+    [[40,20,'giv','נתניהו'],[52,30,'giv','איזנקוט'],[73,30,'giv','ליברמן'],[50,90,'uns','שלושתם = ברית אחת',{s:'alt',t:'שניים מול אחד'}]]
   ],
   human:{
     q:'האם שלושת המלצרים פועלים יחד?',
     opts:['כן, הם צועדים בשורה אחת','לא, הם מתחרים על אותו שולחן'],
     head:'מתחרים, לא בעלי ברית',
-    text:'נתניהו פועל לבדו. איזנקוט וליברמן, שניהם מגוש השינוי, פועלים יחד. שני הצדדים מבקשים את תמיכת המפלגות החרדיות, וסוגיית הגיוס ברקע. אבל ההפרדה הזו לא מצוירת: שלושתם צועדים באותה שורה, באותם מדים, מתחת למילה "ברית". מי שבחר "כן" קרא את הקווים בדיוק כמו Gemini.'
+    text:'נתניהו פועל לבדו. איזנקוט וליברמן, שניהם מגוש השינוי, פועלים יחד. שני הצדדים מבקשים את תמיכת המפלגות החרדיות, וסוגיית הגיוס ברקע. אבל ההפרדה הזו לא מצוירת: שלושתם צועדים באותה שורה, באותם מדים, מתחת למילה "ברית". מי שקורא רק את הקווים מגיע לאותה מסקנה כמו Gemini.'
   },
   credit:'איור: עמוס בידרמן, הארץ, 13.11.2026'
 }];
@@ -528,22 +548,23 @@ CASES.forEach((c,ci)=>{
   <div class="wide">
     <div class="case-head">
       <h2><span class="eyebrow" style="display:block">מקרה <span class="num">${ci+1}</span>, <span class="num">${c.date}</span></span>${c.title}</h2>
-      <div class="stages" role="group" aria-label="שלבי החשיפה">
-        ${c.short.map((s,i)=>`<button type="button" data-s="${i}" title="${c.stages[i]}"><span class="num">${i+1}</span>${s}</button>`).join('')}
+      <div class="controls">
+        <div class="stages" role="group" aria-label="שלבי החשיפה">
+          ${c.short.map((s,i)=>`<button type="button" data-s="${i}" title="${c.stages[i]}"><span class="num">${i+1}</span>${s}</button>`).join('')}
+        </div>
+        <button type="button" class="redbtn" aria-pressed="false">עיפרון אדום</button>
       </div>
     </div>
     <p class="stage-now"></p>
     <div class="grid">
-      ${KEYS.map(k=> k ? `<div class="cell" data-k="${k[0]}"><div class="k"><span class="kn">${k[1]}</span><span class="st"></span></div><div class="fix" hidden></div><div class="t"></div><div class="full"></div><button type="button" class="more">ציטוט מלא</button></div>`
+      ${KEYS.map(k=> k ? `<div class="cell" data-k="${k[0]}"><div class="k"><span class="kn">${k[1]}</span><span class="st"></span></div><div class="keynote"></div><div class="fix" hidden></div><div class="t"></div><div class="full"></div><button type="button" class="more">הרחבת הציטוט</button></div>`
                       : `<div class="cell center"><div class="pic"><img src="${c.img}" alt="${c.alt}"><div class="tags"></div></div></div>`).join('')}
     </div>
     <p class="credit">${c.credit}</p>
-    <div class="ask">
+    <div class="redbar">
       <div>
-        <p class="q">${c.human.q}</p>
-        <div class="choices">${c.human.opts.map(o=>`<button type="button">${o}</button>`).join('')}</div>
+        <a class="doclink" href="${c.doc}" target="_blank" rel="noopener">לתיעוד המלא של השיחה עם Gemini</a>
       </div>
-      <div class="locked">העיפרון האדום יופיע אחרי שתענו.</div>
       <div class="reveal" aria-live="polite"><p class="rh">${c.human.head}</p><p>${c.human.text}</p></div>
     </div>
   </div>`;
@@ -552,7 +573,7 @@ CASES.forEach((c,ci)=>{
   const state = {stage:0, human:false};
   const tagsEl = sec.querySelector('.tags');
   sec.querySelectorAll('.cell .more').forEach(b=>b.addEventListener('click',()=>{
-    const cell=b.closest('.cell'); cell.classList.toggle('open'); b.textContent = cell.classList.contains('open') ? 'סגירה' : 'ציטוט מלא';
+    const cell=b.closest('.cell'); cell.classList.toggle('open'); b.textContent = cell.classList.contains('open') ? 'סגירה' : 'הרחבת הציטוט';
   }));
   const render = ()=>{
     const s = state.stage;
@@ -565,29 +586,32 @@ CASES.forEach((c,ci)=>{
       
       const t = el.querySelector('.t'); t.innerHTML = short; t.className='t';
       el.querySelector('.full').textContent = full || '';
-      const more = el.querySelector('.more'); more.hidden = !full; more.textContent='ציטוט מלא';
+      const more = el.querySelector('.more'); more.hidden = !full; more.textContent='הרחבת הציטוט'; el.classList.remove('open');
+      const kn = el.querySelector('.keynote'); kn.textContent='';
+      if(c.key[s].k===k){ el.classList.remove('same','changed'); el.classList.add('key'); kn.textContent = c.key[s].n; }
       const f = el.querySelector('.fix'); f.hidden = true;
       if(state.human && fix){
-        f.hidden = false; f.textContent = (fix.s==='note' ? '‸ ' : fix.s==='ok' ? '✓ ' : '') + fix.t;
+        f.hidden = false; f.textContent = (fix.s==='note' ? '‸ ' : fix.s==='ok' ? '✓ ' : fix.s==='alt' ? 'או: ' : '') + fix.t;
         if(fix.s==='strike') t.classList.add('struck');
+        if(fix.s==='alt') t.classList.add('alt');
         el.classList.remove('same');
       }
     });
     tagsEl.innerHTML = c.tags[s].map(([x,y,st,t,fix])=>{
       const showFix = state.human && fix;
-      const cls = ['tag', st==='giv'?'giv':'', showFix && fix.s==='strike' ? 'struck' : ''].join(' ');
-      return `<span class="${cls}" style="left:${x}%;top:${y}%"><span>${t}</span>${showFix?`<b class="tfix">${fix.s==='note'?'‸ ':fix.s==='ok'?'✓ ':''}${fix.t}</b>`:''}</span>`;
+      const cls = ['tag', st==='giv'?'giv':'', showFix && fix.s==='strike' ? 'struck' : '', showFix && fix.s==='alt' ? 'alt' : ''].join(' ');
+      return `<span class="${cls}" style="left:${x}%;top:${y}%"><span>${t}</span>${showFix?`<b class="tfix">${fix.s==='note'?'‸ ':fix.s==='ok'?'✓ ':fix.s==='alt'?'או: ':''}${fix.t}</b>`:''}</span>`;
     }).join('');
   };
   sec.querySelectorAll('.stages button').forEach(b=>b.addEventListener('click',()=>{state.stage=+b.dataset.s;render();}));
-  sec.querySelectorAll('.choices button').forEach(b=>b.addEventListener('click',()=>{
-    sec.querySelectorAll('.choices button').forEach(x=>x.classList.remove('picked'));
-    b.classList.add('picked');
-    state.human=true;
-    sec.querySelector('.reveal').classList.add('open');
-    sec.querySelector('.locked').style.display='none';
+  const rb = sec.querySelector('.redbtn');
+  rb.addEventListener('click',()=>{
+    state.human = !state.human;
+    rb.setAttribute('aria-pressed', state.human);
+    rb.textContent = state.human ? 'הסתרת העיפרון האדום' : 'עיפרון אדום';
+    sec.querySelector('.reveal').classList.toggle('open', state.human);
     render();
-  }));
+  });
   render();
 });
 </script>
