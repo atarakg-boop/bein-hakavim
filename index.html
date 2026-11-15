@@ -70,6 +70,19 @@
   .qa dd{margin:0}
 
   /* ---------- legend + cards ---------- */
+  .legend2{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;margin:1.8em 0 0;font-family:var(--sys);font-size:.92rem}
+  .legend2 .lgh{display:flex;align-items:center;gap:8px;font-weight:700;margin:0 0 .5em}
+  .legend2 ul{list-style:none;margin:0;padding:0}
+  .legend2 li{margin:0 0 .45em;display:flex;align-items:center;gap:10px}
+  .legend2 .bl{color:var(--blue-t)} .legend2 .ed{color:var(--red)}
+  .legend2 .box{border:1.5px solid var(--blue);padding:1px 7px;background:#fff;font-size:.85em}
+  .legend2 .box.dash{border-style:dashed}
+  .legend2 s{text-decoration-thickness:2px} .legend2 u{text-decoration-style:dashed;text-underline-offset:4px}
+  .legend2 .sym{display:inline-flex;justify-content:center;align-items:center;min-width:92px;height:1.6em}
+  .legend2 .caret{font-size:1.5em;font-weight:700;line-height:1}
+  .legend2 .caret::first-line{line-height:1}
+  .legend2 li .caret{transform:translateY(-.35em)}
+  @media (max-width:700px){.legend2{grid-template-columns:1fr}}
   .legend{display:flex;flex-wrap:wrap;gap:10px 26px;font-family:var(--sys);font-size:.88rem;margin:1.6em 0 0}
   .legend span{display:inline-flex;align-items:center;gap:8px}
   .sw{display:inline-block;width:22px;height:0;border-top:2px solid}
@@ -267,17 +280,23 @@
     <p>מתוך המהלכים שהמטלה מציעה שילבתי שניים: <b>להחליף ארכיון</b>, כלומר הפעלתי את השיטה של <i>Ekphrasis</i> על ארכיון ישראלי של קריקטורות פוליטיות, ו<b>לתת למכונה לתאר</b>, כלומר ביקשתי מ-Gemini לתאר ולפרש כל קריקטורה, והצבתי את התיאור שלו מול הקריאה האנושית.</p>
     <p><b>שאלת החקירה:</b> כיצד מודל בינה מלאכותית מפרש קריקטורות פוליטיות ישראליות, וכיצד מידע על זהות הדמויות וההקשר משנה את המשמעות שהוא מייחס לדימוי?</p>
     <p>כל קריקטורה הוצגה ל-Gemini בארבעה שלבים דומים, אם כי לא זהים לגמרי: התמונה בלבד, פרטי הפרסום, חיפוש ברשת ושמות האישים. בכל תחנה הדימוי במרכז רשת של תשעה אזורים, כמו ב-<i>Ekphrasis</i>, ולרשת נוסף ציר זמן. הפרשנות של Gemini מופיעה בעיפרון כחול, כמו סקיצה שמשורטטת מחדש בכל שלב. בכל שלב מודגש התא שבו קרה השינוי המרכזי. בלחיצה על "עיפרון אדום" מופיעה הקריאה האנושית, שהיא קריאה אחת אפשרית ולא בהכרח כוונת המאייר.</p>
-    <div class="legend" aria-label="מקרא">
-      <span class="bl"><i class="sw" style="border-color:var(--blue)"></i>עיפרון כחול: הפרשנות של המכונה</span>
-      <span><i class="sw" style="border-color:var(--ink)"></i>דיו: הקריקטורה</span>
-      <span class="ed"><i class="sw" style="border-color:var(--red)"></i>עיפרון אדום: הקריאה האנושית</span>
-      <span class="bl"><i class="sw" style="border-top:2px dashed var(--blue)"></i>מקווקו: מה שנמסר למכונה</span>
-    </div>
-    <div class="marks" aria-label="סוגי הסימון האדום">
-      <span><s>קו מחיקה</s>: שגיאה שאפשר לאמת</span>
-      <span><b style="font-size:1.4em;line-height:0">‸</b> מידע שחסר למכונה</span>
-      <span><u>או:</u> פרשנות אחרת</span>
-      <span>✓ המכונה צדקה</span>
+    <div class="legend2" aria-label="מקרא">
+      <div class="lg bl">
+        <p class="lgh"><i class="sw" style="border-color:var(--blue)"></i>עיפרון כחול: המכונה</p>
+        <ul>
+          <li><span class="sym"><span class="box">רציפה</span></span>הפרשנות של המכונה</li>
+          <li><span class="sym"><span class="box dash">מקווקוות</span></span>מה שנמסר למכונה</li>
+        </ul>
+      </div>
+      <div class="lg ed">
+        <p class="lgh"><i class="sw" style="border-color:var(--red)"></i>עיפרון אדום: הקריאה האנושית</p>
+        <ul>
+          <li><span class="sym"><s>קו מחיקה</s></span>שגיאה שאפשר לאמת</li>
+          <li><span class="sym caret">‸</span>מידע שחסר למכונה</li>
+          <li><span class="sym"><u>או:</u></span>פרשנות אחרת</li>
+          <li><span class="sym">✓</span>המכונה צדקה</li>
+        </ul>
+      </div>
     </div>
     <div class="cards">
       <a class="card" href="#frog"><img src="img/frogs.png" alt=""><span>לבלוע צפרדע<small>3.11.2026</small></span></a>
